@@ -39,4 +39,10 @@ app.get("/", async (req, res) => {
 app.use("/user", userRoute);
 app.use("/blog", blogRoute);
 
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsdoc = require("./swagger.js");
+
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerJsdoc));
+
+
 app.listen(PORT, () => console.log(`Server Started at PORT:${PORT}`));
